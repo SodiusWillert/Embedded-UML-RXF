@@ -4,7 +4,7 @@
   <vendor>Willert</vendor>
   <name>Embedded_UML_Studio</name>
   <description>Integration for generated Code from Willert Embedded UML Studio (EUS)</description>
-  <url>https://ftp.willert.de/downloads/Keil/Pack/</url>
+  <url>https://ftp.willert.de/downloads/Keil/Pack/Embedded_UML_Studio/</url>
   <repository type="git">https://github.com/SodiusWillert/Embedded-UML-Studio-Pack.git</repository>
   <supportContact>support@sodiuswillert.com</supportContact>
   
