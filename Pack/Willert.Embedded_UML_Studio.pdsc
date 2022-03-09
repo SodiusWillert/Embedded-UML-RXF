@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Willert</vendor>
+  <name>Embedded_UML_Studio</name>
+  <description>Integration for generated Code from Willert Embedded UML Studio (EUS)</description>
+  <url>https://github.com/SodiusWillert/Embedded-UML-Studio-Pack/Pack/</url>
+  <repository type="git">https://github.com/SodiusWillert/Embedded-UML-Studio-Pack.git</repository>
+  <supportContact>support@sodiuswillert.com</supportContact>
+  
+  <releases>
+    <release version="1.0.0" date="2022-03-09">
+      Initial Release
+    </release>
+  </releases>
+  
+  <keywords>
+    <keyword>Willert</keyword>
+    <keyword>Sodius</keyword>
+    <keyword>SodiusWillert</keyword>
+    <keyword>RXF</keyword>
+    <keyword>IBM</keyword>
+    <keyword>Rational</keyword>
+    <keyword>Rhapsody</keyword>
+    <keyword>Modeling</keyword>
+    <keyword>UML</keyword>
+    <keyword>EUS</keyword>
+    <keyword>Embedded UML Studio</keyword>
+  </keywords>
+  
+  <generators>
+    <generator id="WillertRXF">
+      <gpdsc name="$PWillertRXF.gpdsc"/>
+    </generator>
+  </generators>
+  
+  <components>
+    <component generator="WillertRXF" Cclass="RXF" Cgroup="Integrate Generated Code"></component>
+  </components>
+  
+</package>

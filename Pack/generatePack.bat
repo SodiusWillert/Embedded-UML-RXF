@@ -9,10 +9,10 @@ set /p PDSCName=<PDSCName.txt
 del /q PDSCName.txt
 
 rem ****  Copy PDSC file to Files directory
-copy /y %PDSCName% .\Source
+copy /y %PDSCName% ..\Source
 
 rem **** Execute a Pack Check
-.\PackChk.exe .\Source\%PDSCName% -n PackName.txt
+.\PackChk.exe ..\Source\%PDSCName% -n PackName.txt
 
 rem **** Check if PackChk.exe has completed successfully
 if %errorlevel% neq 0 goto ErrPackChk >PackChkLog.txt
@@ -21,7 +21,7 @@ rem **** Pipe Pack's Name into Variable
 set /p PackName=<PackName.txt
 
 rem **** Packing
-pushd .\Source
+pushd ..\Source
 "C:\Program Files\7-Zip\7z.exe" a ..\Pack\%PackName% -tzip
 popd
 
