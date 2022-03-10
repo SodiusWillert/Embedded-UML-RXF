@@ -1,4 +1,4 @@
-# Embedded UML Studio - Realtime eXecutioin Framework (RXF)
+# Embedded UML - Realtime eXecutioin Framework (RXF)
 UML-Based Development for safety-critical Embedded Systems
 
 https://www.sodiuswillert.com/en/products/embedded-uml-rxf
