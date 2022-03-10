@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
-  <vendor>Willert</vendor>
+  <vendor>SodiusWillert</vendor>
   <name>Embedded_UML_Studio</name>
   <description>Integration for generated Code from Willert Embedded UML Studio (EUS)</description>
   <url>https://ftp.willert.de/downloads/Keil/Pack/Embedded_UML_Studio/</url>
