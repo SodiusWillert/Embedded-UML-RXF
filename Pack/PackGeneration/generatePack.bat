@@ -4,15 +4,16 @@
 @echo off
 
 rem **** Set name of PDSC file to be packed
-dir /b *.pdsc > PDSCName.txt
+dir /b ..\*.pdsc > PDSCName.txt
 set /p PDSCName=<PDSCName.txt
 del /q PDSCName.txt
 
 rem ****  Copy PDSC file to Files directory
-copy /y %PDSCName% ..\Source
+mkdir ..\PackSource
+copy /y ..\%PDSCName% ..\PackSource
 
 rem **** Execute a Pack Check
-.\PackChk.exe ..\Source\%PDSCName% -n PackName.txt
+.\PackChk.exe ..\PackSource\%PDSCName% -n PackName.txt
 
 rem **** Check if PackChk.exe has completed successfully
 if %errorlevel% neq 0 goto ErrPackChk >PackChkLog.txt
@@ -22,8 +23,8 @@ set /p PackName=<PackName.txt
 del /q PackName.txt
 
 rem **** Packing
-pushd ..\Source
-"C:\Program Files\7-Zip\7z.exe" a ..\Pack\%PackName% -tzip
+pushd ..\PackSource
+"C:\Program Files\7-Zip\7z.exe" a ..\%PackName% -tzip
 popd
 
 goto End
