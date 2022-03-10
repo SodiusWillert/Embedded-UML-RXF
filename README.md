@@ -1,2 +1,4 @@
-# Embedded-UML-Studio-Pack
-Embedded UML Studio uVision IDE Integration in CMSIS-Pack Format
+# SodiusWillert Embedded UML Studio
+UML modeling for embedded systems with restricted resources
+
+https://www.sodiuswillert.com/en/products/embedded-uml-studio
