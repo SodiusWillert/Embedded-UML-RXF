@@ -1,4 +1,4 @@
-# SodiusWillert Embedded UML RXF and RXF-Cert
+# Embedded UML Studio - Realtime eXecutioin Framework (RXF)
 UML-Based Development for safety-critical Embedded Systems
 
 https://www.sodiuswillert.com/en/products/embedded-uml-rxf
