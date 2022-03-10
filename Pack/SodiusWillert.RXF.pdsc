@@ -2,10 +2,10 @@
 
 <package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
   <vendor>SodiusWillert</vendor>
-  <name>Embedded_UML_Studio</name>
-  <description>SodiusWillert Embedded UML Studio - UML modeling for embedded systems with restricted resources</description>
-  <url>https://ftp.willert.de/downloads/Keil/Pack/Embedded_UML_Studio/</url>
-  <repository type="git">https://github.com/SodiusWillert/Embedded-UML-Studio.git</repository>
+  <name>RXF</name>
+  <description>Embedded UML Realtime eXecution Framework (RXF) - UML-based development for saftety-critical embedded systems</description>
+  <url>https://ftp.willert.de/downloads/Keil/Pack/RXF/</url>
+  <repository type="git">https://github.com/SodiusWillert/Embedded-UML-RXF.git</repository>
   <supportContact>support@sodiuswillert.com</supportContact>
   
   <releases>
