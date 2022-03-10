@@ -19,6 +19,7 @@ if %errorlevel% neq 0 goto ErrPackChk >PackChkLog.txt
 
 rem **** Pipe Pack's Name into Variable
 set /p PackName=<PackName.txt
+del /q PackName.txt
 
 rem **** Packing
 pushd ..\Source
