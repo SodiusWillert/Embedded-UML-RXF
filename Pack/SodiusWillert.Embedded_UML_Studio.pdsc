@@ -3,13 +3,13 @@
 <package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
   <vendor>SodiusWillert</vendor>
   <name>Embedded_UML_Studio</name>
-  <description>Integration for generated Code from Willert Embedded UML Studio (EUS)</description>
+  <description>SodiusWillert Embedded UML Studio - UML modeling for embedded systems with restricted resources</description>
   <url>https://ftp.willert.de/downloads/Keil/Pack/Embedded_UML_Studio/</url>
-  <repository type="git">https://github.com/SodiusWillert/Embedded-UML-Studio-Pack.git</repository>
+  <repository type="git">https://github.com/SodiusWillert/Embedded-UML-Studio.git</repository>
   <supportContact>support@sodiuswillert.com</supportContact>
   
   <releases>
-    <release version="1.0.0" date="2022-03-09">
+    <release version="1.0.0" date="2022-03-10">
       Initial Release
     </release>
   </releases>
@@ -26,6 +26,9 @@
     <keyword>UML</keyword>
     <keyword>EUS</keyword>
     <keyword>Embedded UML Studio</keyword>
+    <keyword>Code Generation</keyword>
+    <keyword>Traceability</keyword>
+    <keyword>OSLC</keyword>
   </keywords>
   
   <generators>

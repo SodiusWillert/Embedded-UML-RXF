@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<index schemaVersion="1.0.0" xs:noNamespaceSchemaLocation="PackIndex.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+  <vendor>SodiusWillert</vendor>
+  <url>https://ftp.willert.de/downloads/Keil/Pack/</url>
+  <timestamp>2022-03-10T15:00:33.7300074+00:00</timestamp>
+  <pindex>
+    <pdsc url="https://ftp.willert.de/downloads/Keil/Pack/Embedded_UML_Studio/" vendor="SodiusWillert" name="Embedded_UML_Studio" version="1.0.0"/>
+  </pindex>
+</index>
