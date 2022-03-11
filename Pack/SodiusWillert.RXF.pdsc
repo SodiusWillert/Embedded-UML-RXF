@@ -38,7 +38,7 @@
   </generators>
   
   <components>
-    <component generator="WillertRXF" Cclass="RXF" Cgroup="Integrate Generated Code"></component>
+    <component generator="WillertRXF" Cclass="RXF" Cgroup="Integrate Generated Code" Cversion="1.0.0"></component>
   </components>
   
 </package>
