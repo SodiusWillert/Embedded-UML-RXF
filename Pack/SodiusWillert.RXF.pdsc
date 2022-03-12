@@ -36,9 +36,17 @@
       <gpdsc name="$PWillertRXF.gpdsc"/>
     </generator>
   </generators>
-  
+
+  <taxonomy>
+    <description Cclass="RXF" doc="RXF/Doc/Help/index.html">Embedded UML Realtime Execution Framework</description>
+  </taxonomy>
+
   <components>
-    <component generator="WillertRXF" Cclass="RXF" Cgroup="Integrate Generated Code" Cversion="1.0.0"></component>
+    <component Cclass="RXF" Cgroup="Integrate Generated Code" Cversion="1.0.0" generator="WillertRXF" >
+      <description>Integrate Generated Code from UML Modeling Tool</description>
+      <files>
+        <file category="doc" name="RXF/Doc/Help/WST_2-Usage_3-Keil-uVision-CMSIS-Pack-Integration.htm"/>
+      </files>
+    </component>
   </components>
-  
 </package>
