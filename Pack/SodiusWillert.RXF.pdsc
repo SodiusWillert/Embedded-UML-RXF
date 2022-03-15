@@ -38,7 +38,7 @@
   </generators>
 
   <taxonomy>
-    <description Cclass="RXF" doc="RXF/Doc/Help/index.html">Embedded UML Realtime Execution Framework</description>
+    <description Cclass="RXF" doc="RXF/Doc/Help/index.htm">Embedded UML Realtime Execution Framework</description>
   </taxonomy>
 
   <components>
