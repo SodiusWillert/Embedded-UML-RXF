@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  
+   
+  <title>RXF Documentation - Concurrency</title><!-- $Id: WST_3-Technology_1-Concurrency.htm 70210 2021-03-23 14:45:23Z dkoelbel $ $URL: https://svn.willert.de/V8/trunk/Framework/Shared/Doc/Help/WST_3-Technology_1-Concurrency.htm $ --><link rel="stylesheet" href="wst.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="wst_print.css" type="text/css" media="print"></head>
+<body>
+<div id="View">
+<script src="TOC.js" type="text/javascript"> </script>
+<div id="Content">
+<h1>Concurrency</h1>
+UML supports specification of the concurrency at the class level; 
+standard UML distinguishes between sequential and active classes:<br>
+<img src="Images/Shared/Concurrency.png"><br>
+<p>
+When you specify sequential or active concurrency, you actually specify if the class should run in its own OS task or not. 
+In RTOS implementations, the RXF uses a message queue per OS task to send a UML event to an active class. 
+
+
+</p><h2><a name="Sequential_Classes" id="Sequential_Classes"></a>Sequential Classes</h2>
+All sequential classes run in the so-called main task. If you add a class, by
+default it will be a sequential class. Any event which must be handled
+by this class is placed in a FIFO queue when sent. This single event
+queue is used by all sequential classes. <h2><a name="Active_Classes" id="Active_Classes"></a>Active Classes</h2>
+
+An active class has its dedicated OS task assigned with its own event queue. 
+Active classes are not supported when using the OORTX; all classes run in a single task (Main task).
+<p>
+When you set a class to active using the OORTX, the Model checker will throw an error. 
+It is good practice to isolate active classes from sequential classes when modeling, using packages. 
+This allows you to enable or disable the code generation for active classes via the scope of a component in your model.
+</p><p>
+For an active class, you must verify or overload the following properties:</p><p>
+<img src="Images/Shared/ConfigurationPropertiesActiveClass.png">
+</p></div>
+<p id="Footer">This documentation belongs to the Product RXF_CPP_V8.0.1, released on 2022-03-14. (c) 2022, Sodius Willert</p>
+</div>
+</body></html>

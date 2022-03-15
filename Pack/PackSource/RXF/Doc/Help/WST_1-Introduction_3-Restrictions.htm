@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>RXF Documentation - Product Restriction</title><!-- $Id: WST_1-Introduction_3-Restrictions.htm 75904 2022-03-07 14:53:18Z jtrageser $ $URL: https://svn.willert.de/V8/trunk/Framework/Product/RXF_CPP/RXF/Doc/Help/WST_1-Introduction_3-Restrictions.htm $ -->
+  
+  <link rel="stylesheet" href="wst.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="wst_print.css" type="text/css" media="print"></head><body>
+<div id="View">
+  <script src="TOC.js" type="text/javascript"> </script>
+<div id="Content">
+<h1><a name="Rectrictions" id="Rectrictions"></a>Restrictions</h1>
+Almost all UML elements can be used in Rhapsody in combination with the
+RXF. This includes classes, objects, files,
+statecharts, several kinds of relations etc.<br>However, some UML elements
+cannot be used together with code generation and for some other elements restrictions exist.
+
+<h2>Activity Diagrams and Flow Charts</h2>
+<p>
+Code generation is only supported for operation Flow Charts. Code generation for Activity
+diagrams&nbsp;is not supported.
+</p>
+<h2>Active Classes</h2>
+<p>The RXF with the <span style="font-weight: bold;">RTOS Adapter OORTX</span>
+does not interface with an RTOS. Therfore for OORTX active classes
+(classes that execute in an own execution context / task) are not
+supported. When specifying a class as &#8216;active&#8217;, the RXF model checker
+will show an error.<br><br>It
+is highly recommended to instantiate active classes statically in the
+model. If this is done consistently, all active classes and their
+instances will be listed with details in the ActiveClassTable in the
+RXF Profile.</p><p>Termination of active classes by calling endDispatching() or endBehavior() on active reactive classes is fully supported.</p><p> Destruction of active classes is only supported with limitations:<br></p><ul><li>An
+active class instance should NOT be destroyed while executing.
+Therefore it should be deleted by a task with lower priority or it must
+be ensured that the underlying RTOS task is terminated before deleting
+the active instance.</li><li>Self destruction of an active class from its own context (while processing an event) is not allowed.</li></ul><h2>Animation</h2>
+<p>
+The RXF does not support the IBM Rhapsody internal animation, because
+animation is using hevy weight instrumentation and TCP/IP communication.</p><p>The
+goal of this features is to add back-annotation information to the
+generated code to make tracing of the software possible. To add
+back-annotation and tracing capabilities to the RXF, please refer to
+the section on the <a href="WST_2-Usage_5-Target-Debugger.htm">UML Target Debugger</a> by Willert Software Tools.</p>When
+using the Embedded UML Studio version of Rhapsody by Willert Software
+Tools GmbH the animation option is greyed out, when using the Rhapsody
+Developer version, this is not greyed out and selectable. However,
+since in the RXF does not contain implementations for the functions
+called in the generated instrumentation, the compiling and linking of
+the generated code will always result in errors.<br>
+<h2>Container Classes / One-to-Many Relations</h2>The RXF supports the container sets OMContainers, RXFContainers and STLContainers.<br><br>For the OMContainers, only OMList and OMMap are supported. OMCollection and OMStaticArray are not supported.<br><br>More detailed information about the <a href="https://confluence.willert.de/pages/viewpage.action?pageId=31851213">API Differences can be found at willert knowlede base</a>.<br>
+<h2>Critical Sections vs Mutex</h2>
+For the <span style="font-weight: bold;">OORTX</span> and the <span style="font-weight: bold;">embedded RTOS</span>
+Adapters, the RXF uses critical sections (interrupt locks) to protect
+MemoryPools, EventQueues and the Timer Management. For those adapters,
+the frameork itself does not use mutexes.<br><br>For <span style="font-weight: bold;">Linux or Windows</span>, mutexes are used to protect MemoryPools, EventQueues and Timer Management.<h2>Events</h2>Please also refere the Technology section <a href="WST_3-Technology_6-Asynchronous-Messages.htm">Asynchronous Messages</a> for more detailed information about Events.<br><br>The
+RXF in C++ generates events differently than Rhapsody does it normally.
+Event receptions are generated as Operation calls and events are
+allocated in the destination, instead of allocating them in the source
+by the expansion of the GEN-Macro.<br>
+Code generation for an event differs depending on the property
+CG::Event::DeleteAfterConsumption. If this property is set to&nbsp;True
+on a specific event, calling the GEN Macro will dynamically allocate an
+event and send it to the message queue of the destinations active
+context. It has a new operator that allocated memory from the event
+pools and its delete operator takes care to put back the memory into
+the appropriate pool.<br>When the property
+CG::Event::DeleteAfterConsumption is set to False on a specific
+event,&nbsp;it is a static event with a private new operator (to make
+sure it cannot be dynamically allocated). Inside the destroy operation
+a flag deleteAfterConsume protects static events from being deleted.
+With the RXF, the&nbsp;code generator will generate static events as
+local instances in the reactive destination and just put those
+instances to the event queue.<br><br>Events
+must not be send from a static operation. A nonstatic memberfuction of
+an instance must be called, that then should send the event.<br><br>Events with Arguments will ignore the Property CG::Event::DeleteAfterConsumption and always be generated dynamically.<br><br>When
+using dynamic event from the event pools, the pools need to be
+carefully configured. If an event pool is full, this calls the error
+handler RXF::ErrorHandler::error() with an argument that the error
+handler may not return. For details see <a href="WST_3-Technology_4-Error-Handling.htm">Error Handler Argument "returnAllowed"</a>.
+This means when event pools are configured too small, the system cannot
+continue running but needs to be shut-down or restarted in the
+application&#8217;s error handler.<br><br>The RXF does contain deprecated macros to send events. This may require changes in the
+UML model, if macros like FIRE or GEN_ISR were used in user code
+sections.<br><br>The RXF does not support inheritance of Events.<br><h2>Ports</h2>Only&nbsp;ports with interfaces&nbsp;are supported by the RXF.<br>Rapid ports (not having a specified interface) are not supported.<h2>Power Saving Management</h2>The RXF-Cert does not implement power saving functionality or a sleep mode itself.<br><br>When using the <span style="font-weight: bold;">OORTX</span>, and power saving functionality is required, please&nbsp;contact our <a href="WST_9-Support.htm">support</a>
+team<br><br>When using an <span style="font-weight: bold;">embedded RTOS</span> Adapter, these functionalities are mapped or handled by the RTOS in use.<br><ul></ul><h2>Statechart Start Behavior</h2>In
+statecharts, default Transitions and every other states, that are
+connected to the initial state via a null transition are executed from
+the context that calls startBehavior(). In earlier Versions and in OXF, default
+transitions from the initial state were executed not before
+startDispatching(). For more detailed Information about Run-To-Completion please refer to&nbsp;<a href="WST_3-Technology_2-Realtime.htm">Deterministic Real-Time Behavior</a><h2>Statechart Implementation</h2>Only Statechart Implementation Flat is supported. Code generation for Statechart Implementation Reusable is not supported<h2>Timers</h2>Please note: When tm(delay) is used in a UML state chart, the <span style="font-weight: bold;">RXF by default does not guarantee, that the transition will be taken after the exact time</span>.<br>For detailed information on realtime behavior, please refer section&nbsp;<a href="WST_3-Technology_2-Realtime.htm">Deterministic Real-Time Behavior</a><br><h2>Triggered Operations</h2>&nbsp;Return values for triggered operations are not supported.<br></div>
+<p id="Footer">This documentation belongs to the Product RXF_CPP_V8.0.1, released on 2022-03-14. (c) 2022, Sodius Willert</p>
+</div>
+</body></html>

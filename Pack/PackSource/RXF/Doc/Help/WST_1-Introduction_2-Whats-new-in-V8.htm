@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>RXF Documentation - Whats new in V8</title>
+
+<!-- $Id: WST_1-Introduction_2-Whats-new-in-V8.htm 70210 2021-03-23 14:45:23Z dkoelbel $ $URL: https://svn.willert.de/V8/trunk/Framework/Product/RXF_CPP/RXF/Doc/Help/WST_1-Introduction_2-Whats-new-in-V8.htm $ -->
+<link rel="stylesheet" href="wst.css" type="text/css" media="screen">
+<link rel="stylesheet" href="wst_print.css" type="text/css" media="print">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div id="View">
+<script src="TOC.js" type="text/javascript"> </script>
+<div id="Content">
+<h1><a name="RXF_Migration"></a><a name="V8_-_Whats_New"></a>What's New in RXF V8 C++</h1>
+The RXF is currently available in major version 8.
+It has been based on version 7 but with a builtin base for RXF C++ Cert
+in mind.
+<h2>Compiler support</h2>
+The product requires a C++11 Compiler. Support for CMSIS and ARM
+Compiler 5 have been dropped.
+<h2>MISRA</h2>
+The quality of the RXF sources has been improved with respect to MISRA
+compliancy. MISRA support is out of the box: no extra profile is
+required anymore.
+<h2>Model Checks</h2>
+The RXF comes with
+additional model checks. For details see <a href="WST_2-Usage_4-Configuration.htm#Configuration_Model_Checker_Tab">Model
+Checker section in Configuration</a>.
+<h2><a name="Ports"></a>Ports</h2>
+The code generation for ports has been rewritten.
+<h2><a name="Tags_for_Deployer"></a>Deployer</h2>
+The Deployer is now independent of the IDE to deploy to. This allows
+the product to be used with multiple IDEs. Also, the Deployer allows
+selective Deployment of RXF Sources, to allow delivering multiple RTOS
+adaptions of your model.
+<p>The Deployer allows you to use multiple IDE projects. Which
+IDE project a model and RXF must be deployed to, is specified via a
+property and is thus part of your model.
+As a result, the model and IDE project can both be maintained in a
+Software Configuration Management (SCM). Using relative paths to an IDE
+project allows multiple people to work on the same project or model,
+each in an own IDE project.
+</p>
+<p><img alt="" src="Images/BlinkyDeployerShowingMultipleRTOSses.png"><br>
+</p>
+<h2>Configuration</h2>
+<i>(since Version 7)</i><br>
+The configuration of your model and the RXF is now conveniently
+arranged in a new RXF property perspective.
+<p><img alt="" src="Images/MigrationV8_RXFPropertyPerspective.png">&nbsp;&nbsp;&nbsp;
+<br>
+</p>
+<h2>Support for Pre- and Post Build processes</h2>
+<i>(since Version 7)</i><br>
+You can now easily configure a pre- and post build process to run on
+the deployed sources.
+<p><img alt="" src="Images/Properties_PrePostBuildHooks.png"><br>
+</p>
+<h2>Memory Usage</h2>
+<i>(since Version 7)</i><br>
+You can now easily configure the event memory pools and if you allow
+dynamic memory management for events.
+<p><img alt="" src="Images/MigrationV8_RXFPropertyPerspectiveSample.png"><br>
+</p>
+<h2>RXF Configuration Files</h2>
+<i>(since Version 7)</i><br>
+There are two configuration files generated:
+<ul>
+<li>RXF_Config.h with all constants. It replaces previously
+generated RxfConstants.h, RxfDimensions.h and the product specific
+related WSTProduct.h See <a href="WST_2-Usage_8-Migration-V7-to-V8.htm">Migrate
+from V7 to V8</a> for more details. </li>
+<li>RXF_Event.cpp which is not exactly a configuration file,
+but the values of event pools do end up in this file. These are
+configurable via the a <a href="WST_2-Usage_4-Configuration.htm#Configuration_Configuration_Tab">RXF
+perspective on properties</a>. </li>
+</ul>
+<h2><a name="RXF_Constants"></a>RXF Constants</h2>
+In V8, all RXF related constants are prefixed with RXF_ instead of
+WST_. Furthermore, constants have been renamed. See <a href="WST_2-Usage_8-Migration-V7-to-V8.htm">Migrate
+from V7 to V8</a> for more details.
+<h2><a name="RXF_Error_Handler"></a>RXF Error
+Handler</h2>
+In V6 the error handler used the new-term stereotype RXFErrorHandler.
+In V7 and V8, you can <a href="WST_3-Technology_4-Error-Handling.htm">implement your
+own error handler</a> using the package
+rxfConfigurationStandardContent which results in a RXF_ErrorHandler.h
+and RXF_ErrorHandler.cpp
+<h2>OS Integration</h2>
+<h3><a name="RXF_V8_OS-Task-Stack">OS Task Stack</a></h3>
+<i>(since Version 7)</i><br>
+The task stack used in an <a href="WST_3-Technology_1-Concurrency.htm#Active_Classes">active
+class</a>, is defined as an attribute of such a class,
+automatically generated in the C++ code depending on a new property.
+<p>See <a href="WST_2-Usage_8-Migration-V7-to-V8.htm">Migrate from V7
+to V8</a> for more details. </p>
+<h3><a name="RXF_V8_noMessaQueue">no RTOS message
+queues</a></h3>
+<i>(since Version 7)</i><br>
+RTOS message queues are no longer used to send and retrieve events. We
+use a FIFO event queue internally:
+<ul>
+<li>one event queue for the <a href="WST_3-Technology_1-Concurrency.htm#Sequential_Classes">main
+task</a>
+</li>
+<li>one event queue per <a href="WST_3-Technology_1-Concurrency.htm#Active_Classes">active
+class</a>. </li>
+</ul>
+<p>
+In the OORTX all classes share a single event queue to send and receive
+events.
+</p>
+<h2>OXF Container Classes</h2>
+The container classes use the heap now. As a consequence, the
+configurable memory pools for List and Map have been removed.
+<p><i>(since Version 7)</i><br>
+As the deployer needs to deploy all selected variants from RXF sources
+flat to one RXF directory, also the oxf container class folder
+is deployed flat now. If include paths like
+&lt;oxf\omcollec.h&gt;,
+&lt;oxf\omlist.h&gt; or &lt;oxf\ommap.h&gt; are added
+manually to the
+user model, they have to be changed to &lt;omcollec.h&gt;,
+&lt;omlist.h&gt; or &lt;ommap.h&gt;. For generated
+code, this is fixed
+automatically through the new Framework Profile.<br>
+<br>
+</p>
+<h2><a name="Rhapsody_Integration_in_V8"></a>Rhapsody
+Integration</h2>
+<i>(since Version 7)</i><br>
+No WST_RXF_V8.prp file is required and included
+in SiteC.prp or SiteC++.prp. Properties are now defined in the
+<span style="font-style: italic;">RXF</span>
+stereotype as part of the product specific profile.<br>
+<br>
+<br>
+</div>
+<p id="Footer">This documentation belongs to the Product
+RXF_CPP_V8.0.1, released on 2022-03-14.
+(c) 2022, Sodius Willert</p>
+</div>
+</body></html>

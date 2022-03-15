@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>RXF Documentation - Real-Time Behavior</title><!-- $Id: WST_3-Technology_2-Realtime.htm 73641 2021-12-06 22:42:42Z jtrageser $ $URL: https://svn.willert.de/V8/trunk/Framework/Product/RXF_CPP/RXF/Doc/Help/WST_3-Technology_2-Realtime.htm $ -->
+   
+  <link rel="stylesheet" href="wst.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="wst_print.css" type="text/css" media="print"></head>
+<body>
+<div id="View">
+  <script src="TOC.js" type="text/javascript"> </script> 	
+
+  <div id="Content">
+
+<h1><a name="Deterministic_Realtime_Reaction" id="Deterministic_Realtime_Reaction"></a>
+  Deterministic Real-Time Behavior
+</h1>
+
+Deterministic here does not imply fixed-sequence polling.
+Although this is possible too, the RXF uses a different method to achieve a deterministic behavior.
+The RXF serves your generated application.
+It will provide services like sending and receiving events, handling timeout events and more.
+<br>
+
+<h2><a name="Managing Events"></a>
+  How Events are processed.
+</h2>
+
+When an event is sent, the RXF will store a pointer to that event in a <a href="WST_3-Technology_1-Concurrency.htm#Concurrency">queue for the appropriate task</a>, where
+it will be handled in a FIFO manner. The handling of events is also
+done by the RXF. Handling events also means handling expired
+timers that are converted to events when they expire.
+<br><br>
+An event for a specific object will be given to the generated event
+handle function of that Objects Class. This function carries out all the
+associated actions (On Entry, On Exit, in State, in transitions) and
+will return the control to the RXF when finished.
+<br><br>
+This will guarantee a flawless handling of events in a deterministic
+way. Actions can be delayed by other actions but only for a time that
+can easily be calculated.<br>
+
+<h2><a name="Managing_Timouts"></a>
+  How Time-outs (tm(xx) ) are handled.
+</h2>
+When the tm(xx) statement is used in a state-machine,
+the user wants a certain delay in the processing of states.
+tm(xx) in a transition means: Wait xx milliseconds
+and then take this transition (and execute all attached actions).<br><br>
+The timer ticks are processed by a callback function of the RXF, which is called at a regular interval of&nbsp;<a href="WST_2-Usage_4-Configuration.htm#Constant_MS_PER_TICK">MS_PER_TICK</a> ms.<br><br>The delay in the tm(Delay) statement<span style="font-weight: bold;"> should only be a multiple of&nbsp;</span><a style="font-weight: bold;" href="WST_2-Usage_4-Configuration.htm#Constant_MS_PER_TICK">MS_PER_TICK</a><span style="font-weight: bold;">.</span> Values that do not mach a multiple of the tick time get <span style="font-weight: bold;">rounded up to the next matching multiple of ticks</span> (e.g. if the tick time is 10ms and tm(1) is typed, the Delay will be 1 Tick (10ms) )&nbsp;<br><br>Due
+to the fact that the timer is derived from an external tick source, the
+granularity of the&nbsp;ticks is the minimum tick value. It is possible
+that a timeout request occurs
+just before a tick would happen or just after a tick has happened, what
+leads to an inaccuracy of timout transitions of 1 tick.<br><br><span style="font-weight: bold;">In general a timeout will expire between ( timeout-time -&nbsp;</span><a style="font-weight: bold;" href="WST_2-Usage_4-Configuration.htm#Constant_MS_PER_TICK">MS_PER_TICK</a><span style="font-weight: bold;"> ) and&nbsp; timeout-time, or in other words in worst case 1 Tick (or the time defined in </span><a style="font-weight: bold;" href="WST_2-Usage_4-Configuration.htm#Constant_MS_PER_TICK">MS_PER_TICK</a><span style="font-weight: bold;">) earlier than expected.&nbsp;</span><p>If a <span style="font-weight: bold;">MINIMUM time for tm(xx) to pass before the transition is taken needs to be&nbsp;guaranteed</span>, the time of one tick ( value of&nbsp;<a href="WST_2-Usage_4-Configuration.htm#Constant_MS_PER_TICK">MS_PER_TICK</a>
+) needs to be added to the desired time. This is done automatically by
+the simplifier for all timeout-transitions of a reactive class, if the
+property <span style="font-weight: bold;">RXF::Class::TimeoutGuaranteeTime</span> is set to true on this class. If this property should be applied to the whole model, it can also be overridden on project or component level.</p><p>It is a common problem for timeouts that they can expire 1 tick earlier than expected. See also:<br><a href="https://www.keil.com/support/docs/3766.htm">https://www.ibm.com/support/pages/rhapsody-tm-function-not-precise<br>https://www.keil.com/support/docs/3766.htm</a></p><br>After the timout has expired, a timeout event is<span style="font-weight: bold;"> placed to the event queue</span>.
+If a statechart is in the middle of processing an event,
+that event needs to complete before the timeout is handled. Also there
+can be other events in the queue that are processed first. <span style="font-weight: bold;">This could cause a non-determinable extra delay</span>.<br><br>When using the RXF with an <span style="font-weight: bold;">RTOS Adapter</span>, please note:<br>To
+prevent additional delay through suppression of timer management task
+by other tasks, the priority of the timer management task should be
+configured to be the highest.<br>
+<p><span style="font-weight: bold;">The following timeout behavior can be observed with MS_PER_TICK = 10 miliseconds:</span>
+</p><p>[tm(0)] - expires immediately - is put to queue without being scheduled.<br>
+[tm(1)]  - expires after&nbsp;0 to 10 ms (at the next tick).<br>
+[tm(10)] - expires after 10 to 20 ms. (Same behavieor as tm(1) to tm(9))<br>
+[tm(11)] - expires after 10 to 20 ms.<br>
+[tm(20)] - expires after 10 to 20 ms.<br>[tm(100)] - expires after 90 to 100 ms.<br>[tm(1000)] - expires after 990 to 1000 ms.</p><p>
+And so on.
+So the argument in tm(xx) indicates the time ( minus 1 Tick ) to pass before
+the transition is taken!</p>With <span style="font-weight: bold;">RXF::Class::TimeoutGuaranteeTime = true</span> the expected timeout values are:<p>[tm(0)] - expires at the next tick (0 to 10 ms later).<br>
+[tm(1)] - expires after 10 to 20 ms.<br>
+[tm(10)] - expires after 10 to 20 ms.<br>[tm(11)] - expires after 20 to 30 ms.<br>[tm(20)] - expires after 20 to 30 ms.<br>[tm(100)] - expires after 100 to 110 ms.<br>[tm(1000)] - expires after 1000 to 1010 ms.</p><p>The RXF prevents invalid values for the delay as far as possible:<br></p><ul><li>A
+delay of 0 (zero) milliseconds (i.e. tm(0) ) will result in a timeout
+event that is immediately queued without being scheduled.</li><li>The argument type is unsigned int.&nbsp;For negative values or invalid arguments the compiler should issue a warning.<br></li></ul><h2><a name="NULL_transitions"></a> Run-To-Completion (NULL-Transitions)
+</h2>
+In a statechart it is possible to model state transitions that are
+directly to be taken, without waiting for an event as a trigger. These
+are so called NULL-transitions. The RXF includes a mechanism to detect
+endless loops of NULL-transitions (e.g. because of a design error in
+modeling a state machine) during runtime. An endless loop is detected,
+if more than a defined number of NULL-transitions occur in a row. This
+<a href="WST_2-Usage_4-Configuration.htm#Constant_REACTIVE_MAX_NULL_STEPS">maximum number of directly following NULL-transitions can be configured</a>.<br><h3>NULL-transitions on Statechart Start Behavior</h3>If the first transition of a statechart is a NULL transition (without trigger) the Framework <span style="font-weight: bold;">handles the transition from the context, that calls the startBehavior() operation</span>.
+From this context a runToCompletion() is executed. That means all
+following states that are connected with NULL transitions are executed
+from this startup context. The user should be aware of this when using
+initial NULL transitions.<br>If a context&nbsp;switch is required before
+executing initial behavior, a tm(0) can be used as trigger for a&nbsp;state
+containing this behavior. A tm(0) will put a timeout event in the event
+queue immediately and thereby trigger a context switch to the execution
+context of this statechart.<br><br>
+
+</div>
+  <p id="Footer">This documentation belongs to the Product RXF_CPP_V8.0.1, released on 2022-03-14. (c) 2022, Sodius Willert</p>
+</div>
+
+</body></html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>RXF Documentation - Getting Started 4</title>
+  <!-- $Id: WST_2-Usage_3-Getting-Started-4.htm 70210 2021-03-23 14:45:23Z dkoelbel $ $URL: https://svn.willert.de/V8/trunk/Framework/Shared/Doc/Help/WST_2-Usage_3-Getting-Started-4.htm $ -->
+     
+  <link rel="stylesheet" href="wst.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="wst_print.css" type="text/css" media="print">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"></head>
+<body>
+<div id="View">
+<script src="TOC.js" type="text/javascript"> </script>
+<div id="Content">
+<h1><a name="Blinky">Getting Started Example - Part 4</a></h1>
+<p>
+</p><h2>Generate Code</h2>
+Now it's time to generate the code.<br>
+<br>
+<img src="Images/Shared/BlinkyGenerateCode.png"><br>
+<br>
+If no valid IDE project is set inside the property
+"RXF::Deployer::IDEProject" on the active configuration, a deployer
+window will pop-up to request the specification of a valid IDE
+project.<br>
+<br>
+<img src="Images/Shared/BlinkyDeployerFileSelect.png"><br>
+<br>
+The relative path from the chosen IDE project to the Rhapsody model
+project folder will be saved in the property
+"RXF::Deployer::IDEProject" of your active component. So make sure that
+your component have write access. Again, this will only be done, if the
+path changes.<br>
+Optionally you can also use absolute paths in the property.
+<h2>Make</h2>
+The next step is to deploy the generated code into the IDE project.<br>
+<img src="Images/Shared/BlinkyMake.png"><br>
+<br>
+By clicking on this button following things happen:
+<ul>
+<li>The generated files from Rhapsody will be copied
+to the folder "GeneratedModel" next to the IDE project. If the folder
+"GeneratedModel" does not exist, it will be generated automatically.
+The folder name can be adapted by the property
+RXF::Deployer::ModelCodeFolder on the active configuration.</li>
+<li>The copied source files are added to the IDE
+project. This also means, that no longer existing files are removed
+from the IDE. Therefore, when you remove elements from your model or
+change the scope, that some model elements are no longer in the scope:
+Please perform a "Clean Redundant Source Files" command in Rhapsody.<br>
+<img src="Images/Shared/BlinkyCleanRedundantSourceFiles.png"><br>
+This ensures, that all unneeded files are removed from the IDE project to perform a clean build inside the IDE.</li>
+<li>If the IDE is currently closed it will
+automatically be started by the deployer and opens the project which is
+set in the property "RXF::Deployer::IDEProject". This behavior can be
+changed by the property "RXF::Deployer::OpenIDEProject" on
+the active configuration.</li>
+</ul>
+One useful option is to set the generated source code
+folder from the active configuration in Rhapsody to the same folder
+where you want to deploy.<br>
+<br>
+<img src="Images/Shared/BlinkyConfigSourceFolder.png"><br>
+<br>
+This has following advantages:
+<ul>
+<li>You can keep your model and your IDE project
+synchronized by roundtripping changes from the IDE back to your model
+and directly see changes inside your IDE after code generation from
+your model.</li>
+<li>The Deployer does not need to copy the generated files to the IDE project.</li>
+</ul>
+<h2>Run</h2>
+The run button will have no effect, because the
+execution of the final build will be triggered inside the IDE. So feel
+free to use the property CPP_CG::RXF::InvokeExecutable on the active
+configuration for your own purposes.
+<p>
+Please continue to the next <a href="WST_2-Usage_3-Getting-Started-5.htm">Part 5</a><a>
+</p></div>
+<p id="Footer"><a>This documentation belongs to the Product RXF_CPP_V8.0.1, released on 2022-03-14. (c) 2022, Sodius Willert</a></p>
+</div>
+</body></html>

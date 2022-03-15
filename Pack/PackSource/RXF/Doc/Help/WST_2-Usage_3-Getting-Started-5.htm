@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>RXF Documentation - Getting Started 5</title>
+
+<!-- $Id: WST_2-Usage_3-Getting-Started-5.htm 70210 2021-03-23 14:45:23Z dkoelbel $ $URL: https://svn.willert.de/V8/trunk/Framework/Product/RXF_CPP/RXF/Doc/Help/WST_2-Usage_3-Getting-Started-5.htm $ -->
+<link rel="stylesheet" href="wst.css" type="text/css" media="screen">
+<link rel="stylesheet" href="wst_print.css" type="text/css" media="print">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div id="View">
+<script src="TOC.js" type="text/javascript"> </script>
+<div id="Content">
+<h1>Getting Started Example - Part 5</h1>
+<p>
+</p>
+<h2>Compile the generated code</h2>
+After we have deployed the generated files into the IDE project, it is
+time to compile the generated source
+files.<br>
+<br>
+After compilation has finished successfully, you should be able to
+flash a connected target and start your application or debug it on
+Source
+level on hardware or in a simulator.<br>
+<br>
+<span style="font-style: italic;">Note for Keil uVision users that experience build problems in the CMSIS2
+project that are related to the Keil-RTX RTOS configuration (e.g.:
+error: New RTX-V2 core does not require RTX_Config.h" or messages about
+using the legacy Keil RTX): you should consider updating your Keil
+MDK-ARM to the latest version or try to go into the project
+configuration, select RTOS "None" and only set the CMSIS2 RTOS via
+package manager.</span><br>
+<br>
+The important thing is: All target and compiler depending settings can
+now be done inside your IDE project so that you can keep your Rhapsody
+model clean from your build environment. This also encloses adding
+additional legacy sources to your IDE project.
+<p></p>
+</div>
+<p id="Footer">This documentation belongs to the Product
+RXF_CPP_V8.0.1, released on 2022-03-14. (c) 2022, Sodius
+Willert</p>
+</div>
+</body></html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><!-- $Id: WST_3-Technology_4-Error-Handling.htm 70210 2021-03-23 14:45:23Z dkoelbel $ $URL: https://svn.willert.de/V8/trunk/Framework/Product/RXF_CPP/RXF/Doc/Help/WST_3-Technology_4-Error-Handling.htm $ -->
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>RXF Documentation - Error Handling</title>
+  <link rel="stylesheet" href="wst.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="wst_print.css" type="text/css" media="print"></head>
+<body>
+<div id="View">
+<script src="TOC.js" type="text/javascript"> </script>
+<div id="Content">
+<h1><a name="Error_handler" id="Error_handler"></a>Error Handling</h1>
+Runtime errors in the RXF are handled by the error
+handler<span style="font-style: italic;"></span>.
+The error handler will catch runtime errors like the lack of resources,
+etc.<br>
+<br>
+The error handler function is called from several places in the
+Framework, the first argument
+indicates the error that occurred, the second parameter is not always
+used but for instance
+in case of an RTOS failure, the RTOS error code is passed here.
+&nbsp;The third parameter "returnAllowed" can be used to decide if the
+software can recover from that error after application specific error
+handling or if the error is expected to require a shutdown or reboot.
+But the final decision which errors are handled in which way can only
+be decided with application knowledge by the developer.<br>
+<br>
+The example implementation of the operation <span style="font-style: italic;">RXF::ErrorHandler::error()</span>&nbsp;is&nbsp;implemented
+as an endless loop in the source file RXF_ErrorHandler.cpp, if "returnAllowed" is false. Otherwise it just returns.<br><br>It is strongly
+advised to provide an own error handler
+implementation which fits your application needs.<br>
+The recommended way to modify the error handler is using the error handler Standard Content of the RXF:<br>
+<ul>
+  <li>Create a new RXFErrorHandler package by right clicking the
+project or an existing package and from the "RXF" profile select
+"RXFErrorHandler": </li>
+  <br>
+  <img alt="How to create an overridden error handler" src="Images/Shared/RXF_Error.png">
+  <p>
+  </p><li>Modify the Implementation of RXF_ErrorHandler::error() to fit your needs.</li>
+</ul><br>If it is necessary to catch the Error of unconsumed events
+directly in a reactive class, before the error handler is called the
+operation handleNotConsumed can be overridden for a reactive class.<br>The operation can have the OXF compatible signature<br>void handleNotConsumed(IOxfEvent* ev,EventNotConsumedReason reason)<br>but will be corrected to the RXF compatible signature by the simplifier<br>void handleNotConsumed(const Event* const event);
+
+<h2><a name="Error_Codes"></a>Error Codes</h2>The error codes are available in the file RXF_ErrorCodes.h along with a comment as explanation.<br></div>
+<p id="Footer">This documentation belongs to the Product RXF_CPP_V8.0.1, released on 2022-03-14. (c) 2022, Sodius Willert</p>
+</div>
+</body></html>

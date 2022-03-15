@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: TCCodeAnnotationOptionsKeil.xml 67232 2020-07-21 08:27:37Z cmaas $ $URL: https://svn.willert.de/V8/trunk/Framework/Product/RXF_CPP/RXF/Doc/Help/XML/TCCodeAnnotationOptionsKeil.xml $ -->
+<CodeGeneration xmlns:cg="http://www.btc-es.de/CodeGeneration/1.0">
+	<Environment>
+		<Compiler name="ARM" ccompiler="armcc.exe"/>
+		<TargetConfigFile absolute_path="&lt;PathToFil&gt;\targetconfigCm3.xml"/>
+		<ARM compiler_install_dir="C:\Program Files\Keil\ARM\ARMCC\"/>
+	</Environment>
+</CodeGeneration>

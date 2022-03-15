@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><!-- $Id: WST_3-Technology_3-High-Water-Marks.htm 70210 2021-03-23 14:45:23Z dkoelbel $ $URL: https://svn.willert.de/V8/trunk/Framework/Product/RXF_CPP/RXF/Doc/Help/WST_3-Technology_3-High-Water-Marks.htm $ -->
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>RXF Documentation - High Water Marks</title>
+  <link rel="stylesheet" href="wst.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="wst_print.css" type="text/css" media="print"></head>
+<body>
+<div id="View">
+  <script src="TOC.js" type="text/javascript"> </script> 	
+  <div id="Content">
+  <h1><a name="High_water_marks" id="High_water_marks"></a>High Water Mark mechanism</h1>
+
+A high water mark mechanism can be used to finetune the configuration of your memory pools.<p>
+These pools are used to allocate dynamically objects: objects derived
+from your classes but also events. If an event has parameters, the
+resulting event structure is larger. </p><p>
+A highwater mark is a counter which is incremented when another block is allocated from a pool and never decremented: 
+it shows how much a pool has been used so far. All event memory pools have such a mechanism: 
+memoryPool_Event_default, memoryPool_Event_small, memoryPool_Event_medium and memoryPool_Event_large
+
+</p><p>
+Depending on the <a href="WST_2-Usage_4-Configuration.htm#Configuration_Memory_Pools_Tab">configuration of the memory pools</a>,
+there are multiple pools. All pools are statically allocated in a
+generated RXF_Event.cpp and each pool consists of a number of blocks.
+You can configure the size of a block and the number of blocks in a
+pool. If you configure the block count to zero, that pool is not
+allocated.
+</p><p>
+At runtime, you can inspect the pools with a debugger. Per allocated pool, there is a member
+</p><ul>
+	<li>count. This is the actual value.
+	</li>
+	<li>maxCount. This is the highwater mark: when count is increased, this maxCount is increased.</li>
+</ul>If a loggging is required, the highwater mark values can be
+requested by calling getMaxCount() on a specific Memory Pool instance.<br>
+
+</div>
+
+  <p id="Footer">This documentation belongs to the Product RXF_CPP_V8.0.1, released on 2022-03-14. (c) 2022, Sodius Willert</p>
+</div>
+</body></html>

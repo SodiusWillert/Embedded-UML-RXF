@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Introduction">
+			<param name="Local" value="WST_1-Introduction.htm">
+			</OBJECT>
+  <ul>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Whats new in V8">
+			<param name="Local" value="WST_1-Introduction_2-Whats-new-in-V8.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Restrictions">
+			<param name="Local" value="WST_1-Introduction_3-Restrictions.htm">
+			</OBJECT>
+  </ul>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Usage">
+			<param name="Local" value="WST_2-Usage.htm">
+			</OBJECT>
+  <ul>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Installation">
+			<param name="Local" value="WST_2-Usage_1-Installation.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Getting Started 1">
+			<param name="Local" value="WST_2-Usage_3-Getting-Started-1.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Getting Started 2">
+			<param name="Local" value="WST_2-Usage_3-Getting-Started-2.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Getting Started 3">
+			<param name="Local" value="WST_2-Usage_3-Getting-Started-3.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Getting Started 4">
+			<param name="Local" value="WST_2-Usage_3-Getting-Started-4.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Getting Started 5">
+			<param name="Local" value="WST_2-Usage_3-Getting-Started-5.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Configuration">
+			<param name="Local" value="WST_2-Usage_4-Configuration.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Deployment">
+			<param name="Local" value="WST_2-Usage_4-Deployment.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Keil uVision CMSIS Pack Integration">
+			<param name="Local" value="WST_2-Usage_4-Keil-uVision-CMSIS-Pack-Integration.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Target Debugger">
+			<param name="Local" value="WST_2-Usage_5-Target-Debugger.htm">
+			</OBJECT>
+  <ul>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="FAQ">
+			<param name="Local" value="WST_2-Usage_5-Target-Debugger_FAQ.htm">
+			</OBJECT>
+  </ul>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="TestConductor">
+			<param name="Local" value="WST_2-Usage_6-TestConductor.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Migration V7 to V8">
+			<param name="Local" value="WST_2-Usage_8-Migration-V7-to-V8.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Configuration Management">
+			<param name="Local" value="WST_2-Usage_9-Configuration-Management.htm">
+			</OBJECT>
+  </ul>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Technology">
+			<param name="Local" value="WST_3-Technology.htm">
+			</OBJECT>
+  <ul>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Concurrency">
+			<param name="Local" value="WST_3-Technology_1-Concurrency.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Realtime">
+			<param name="Local" value="WST_3-Technology_2-Realtime.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="High Water Marks">
+			<param name="Local" value="WST_3-Technology_3-High-Water-Marks.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Error Handling">
+			<param name="Local" value="WST_3-Technology_4-Error-Handling.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="MISRA">
+			<param name="Local" value="WST_3-Technology_5-MISRA.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Asynchronous Messages">
+			<param name="Local" value="WST_3-Technology_6-Asynchronous-Messages.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Profiles">
+			<param name="Local" value="WST_3-Technology_7-Profiles.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Properties">
+			<param name="Local" value="WST_3-Technology_7-Properties.htm">
+			</OBJECT>
+  </ul>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Support">
+			<param name="Local" value="WST_9-Support.htm">
+			</OBJECT>
+  <ul>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Alphabetical Index">
+			<param name="Local" value="WST_General_Alphabetical-Index.htm">
+			</OBJECT>
+		<li> <OBJECT type="text/sitemap">
+			<param name="Name" value="Table Of Contents">
+			<param name="Local" value="WST_General_Table-Of-Contents.htm">
+			</OBJECT>
+  </ul>
+</UL>
+</BODY></HTML>

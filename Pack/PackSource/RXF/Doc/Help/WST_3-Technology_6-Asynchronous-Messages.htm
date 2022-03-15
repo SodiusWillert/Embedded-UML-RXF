@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><!-- $Id: WST_3-Technology_6-Asynchronous-Messages.htm 70297 2021-03-29 08:06:27Z dkoelbel $ $URL: https://svn.willert.de/V8/trunk/Framework/Product/RXF_CPP/RXF/Doc/Help/WST_3-Technology_6-Asynchronous-Messages.htm $ -->
+      
+  
+  <title>RXF Documentation - Asynchronous Messages</title><link rel="stylesheet" href="wst.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="wst_print.css" type="text/css" media="print"></head>
+<body>
+<div id="View">
+<script src="TOC.js" type="text/javascript"> </script>
+<div id="Content">
+<h1><a name="Event_Handling"></a><a name="Messages"></a>Asynchronous Messages<br>
+</h1>
+The RXF supports communication via asynchronous messages, also known as
+events. This is a strong mechanism for decoupling object-oriented
+software in run time behavior.<br>
+<br>
+Event receptions in a UML model are usually consumed by classes, which
+have their behavior modeled via a statechart. An event can for example
+be perfectly used to trigger a transition to another state.<br>
+<h2><a name="Events_Dynamic"></a>Dynamic Events vs Static Events</h2>
+Events can either be dynamic or static with respect to allocation. In
+RXF V8 C++ Event receptions will be generated as operation calls and
+events will always be allocated in the reciever instance. To send an
+event the GEN macro has to be used.<br>
+<ul>
+	<li>Dynamic events are used unless you specify a static event: dynamic events are commonly used.<br>
+	For Events the new Operator is overridden to allocate space in one of the static <a href="WST_2-Usage_4-Configuration.htm#Configuration_Memory_Pools_Tab">Memory pools</a>.&nbsp;</li></ul><ul><li>Static events are statically allocated. That means there is no memory allocated from&nbsp;<a href="WST_2-Usage_4-Configuration.htm#Configuration_Memory_Pools_Tab">Memory pools</a>,
+but an existing preallocated event instance is used. Therefore it is
+faster than first allocating memory. In V8 those instances are
+generated in the class that contains the event reception and on the
+interface side, there is no difference between sending a static or
+sending a dynamic event.<br>All
+events that have no Arguments and have the property
+<span style="font-weight: bold;">CG::Event::DeleteAfterConsumption</span> overridden to <span style="font-weight: bold;">false</span>, will be
+generated as static events.<br>It is recommendet to use static events (Events without parameter) in
+Interrupt Service Routines to shorten the execution time of an ISR<br></li>	
+</ul>
+</div>
+<p id="Footer">This documentation belongs to the Product RXF_CPP_V8.0.1, released on 2022-03-14. (c) 2022, Sodius Willert</p>
+</div>
+</body></html>

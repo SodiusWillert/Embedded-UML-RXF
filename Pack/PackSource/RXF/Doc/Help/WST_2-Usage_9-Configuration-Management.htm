@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  
+  
+  <title>RXF Documentation - Software Configuration Management</title><!-- $Id: WST_2-Usage_9-Configuration-Management.htm 70210 2021-03-23 14:45:23Z dkoelbel $ $URL: https://svn.willert.de/V8/trunk/Framework/Shared/Doc/Help/WST_2-Usage_9-Configuration-Management.htm $ --><link rel="stylesheet" href="wst.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="wst_print.css" type="text/css" media="print"></head>
+<body>
+<div id="View">
+<script src="TOC.js" type="text/javascript"> </script>
+<div id="Content">
+<h1><a name="Software_Configuration_Management"></a><a name="SCV"></a><a name="Configuration_Management"></a><a name="Versioning_the_RXF"></a><a name="Profile_under_Config_Management"></a>Software
+Configuration Management (SCM)</h1>
+If you work on one model with a team, its absolutely necessary to put your model into a config management solution. 
+If you do this, a question will be, where to put the RXF and from which location to include the RXF specific profile. 
+The next steps will lead you through our best-practice aproach. 
+Precondition is that your configuration management tool supports symbolic links - 
+we use SVN with externals and it works fine:
+<ul>
+	<li>make sure to add the whole "RXF" folder of your product to configuration management.
+	It will contain the RXF sources, profiles, simplifiers and required tools like the Deployer. 
+	All this needs to be added, otherwise the relative paths used in the RXF profiles will not work anymore.<br>
+	Other content like "Doc" and "Samples" does not necessarily need to be checked in.
+	</li>
+	<li>add the versioned "RXF" folder as external relative to your user model.
+	</li>
+	<li>add the Framework Profile to your user Model from this external location, relative to the user model.
+	</li>
+</ul>
+<p>
+If you receive RXF updates, you may check in the new files from the ZIP file in another repository location. 
+Then per project you can decide, which RXF folder version you want to have in a project's working copy 
+(using svn externals or a similar mechanism of another configuration management tool).
+</p><p>
+Folders beside the RXF folder are not required to be checked in (relative to the profile), as they just contain 
+documentation and sample projects.
+</p><p>
+This approach has the advantage that the installed RXF is under configuration management to and 
+you can easily switch versions by changing the RXF version number in your external. 
+The user model can be checked out to any directory (if only relative paths are used) -
+Nevertheless we would recommend to use same&nbsp;checkout directories (and also same Tool Paths) on every development PC.</p><h2><a name="Subversion_Support"></a>Subversion Support (svn)</h2>
+For Subversion support the RXF profile
+also includes the Subversion and TortoiseSVN ConfigurationManagement
+properties. Feel free to use it and please provide feedback to
+support@willert.de if anything is missing.
+</div>
+<p id="Footer">This documentation belongs to the Product RXF_CPP_V8.0.1, released on 2022-03-14. (c) 2022, Sodius Willert</p>
+</div>
+
+</body></html>

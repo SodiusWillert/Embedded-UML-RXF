@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><!-- $Id: WST_2-Usage_4-Configuration.htm 70210 2021-03-23 14:45:23Z dkoelbel $ $URL: https://svn.willert.de/V8/trunk/Framework/Product/RXF_CPP/RXF/Doc/Help/WST_2-Usage_4-Configuration.htm $ -->
+
+
+<title>RXF Documentation - Product Usage</title><link rel="stylesheet" href="wst.css" type="text/css" media="screen">
+<link rel="stylesheet" href="wst_print.css" type="text/css" media="print"></head>
+<body>
+<div id="View">
+<script src="TOC.js" type="text/javascript"> </script>
+<div id="Content">
+<h1><a name="Configuration"></a>Configuration</h1>
+You typically configure the RXF at the component level of your model.
+This applies a default behaviour for the entire model. Via the Features
+of a component and the Properties tab, you see a dropdown list: All,
+Overridden, Locally overridden, Common, <b>RXF</b> and
+Filter...<br>
+<p> <img alt="" src="Images/Properties_ActiveClass.png">
+</p>
+<p>
+There are two configuration aspects which you typically apply at the
+class level:
+</p>
+<ul>
+<li>task details for an <a href="WST_3-Technology_1-Concurrency.htm">active class</a>.
+You may want to overload a default value.
+</li>
+<li>how to handle an event not consumed or a triggered
+operation not consumed, if you want an exception on the default
+behaviour for your model. See section VTBL below. </li>
+</ul>
+<h2><a name="Configuration_Deployer_Tab"></a>Deployer
+Tab</h2>
+On this tab you configure if you want to deploy and if you want to
+launch or activate the IDE project where the generated code and RXF
+sources are deployed to. The <a href="WST_2-Usage_4-Deployment.htm">configuration
+of the exact paths and optional IDE used, are described separately</a>.
+
+<h2><a name="Configuration_Configuration_Tab"></a>Configuration
+Tab</h2>
+The configuration tab shows features which all result in constants
+defined in generated configuration files, which are included by a
+number of RXF source files.
+The configuration details result in RXF_Config.h which is generated
+next to your model code.
+<p>The following constants can be configured, if you are using
+the OORTX or any RTOS:
+</p>
+<ul>
+
+<li><a name="Constant_MS_PER_TICK"></a>MS_PER_TICK
+This setting must match the desired <a href="WST_3-Technology_2-Realtime.htm#Managing_Timouts">behaviour
+of timeouts</a> </li>
+<li><a name="Constant_REACTIVE_MAX_NULL_STEPS"></a>REACTIVE_MAX_NULL_STEPS.&nbsp;Number of allowed NULL transitions before the error handler is called.<a href="WST_3-Technology_4-Error-Handling.htm#RXF_ERROR_INFINITE_NULL_TRANSITIONS"></a>
+</li>
+</ul>
+When an RTOS is configured on the Deployer tab, the following
+constants are added to the configuration:
+<ul>
+<li><a name="Constant_MAIN_TASK_QUEUE_SIZE"></a><a name="Constant_MAIN_TASK_STACK_SIZE"></a>MAIN_TASK_QUEUE_SIZE and MAIN_TASK_STACK_SIZE
+Please refer to the description on <a href="WST_3-Technology_1-Concurrency.htm">Concurrency</a></li><li><a name="Constant_RXF_TIMER_TASK_PRIORITY"></a>MAIN_TASK_PRIORITY
+Priority of Main task. Possible priorities and their RTOS specific
+counterparts can be found in RXF_Priority.h. </li>
+</ul>
+<p>All constants which can be used by the C++ code are generated in
+RXF_Config.h.<br>
+</p><h2><a name="Configuration_Memory_Pools_Tab"></a>Memory
+Pools Tab</h2>
+The RXF statically allocates memory pools to dynamically allocate
+events.
+<p>Note that there is no
+RXF::Configuration::EVENT_DEFAULT_BLOCK_SIZE but only
+RXF::Configuration::EVENT_DEFAULT_BLOCK_COUNT which is used to specify
+the number of elements for a pool used for events without parameters.
+</p>
+<p>You can finetune the size of each pool by specifying the size
+of respective blocks and the number of blocks (when 0, that pool is not
+allocated).
+</p>
+<p>To finetune the memory pools used, you can inspect <a href="WST_3-Technology_3-High-Water-Marks.htm">high
+water marks mechanism</a> to investigate how your pools are used.
+</p>
+<p>The use of the memory pools and the heap (used by
+malloc()), can be configured via <a href="WST_3-Technology_7-Properties.htm">Properties</a>.</p>
+<h2><a name="Configuration_Model_Checker_Tab"></a>Model
+Checker</h2>
+The RXF comes with
+additional model checks. Some of them just enhance the "default"
+Rhapsody model checks, others have been added to identify model
+constructs that are not supported by the RXF. The RXF model checks can
+be configured via properties in the ModelChecks subject. They can be
+activated or deactivated at code generation time using&nbsp;the
+properies under ModelChecks::General. The property help shown in
+Rhapsody explains what the individual checks do.<h2><a name="Configuration_User_Hooks_Tab"></a>User
+Hooks Tab</h2>
+Here you can configure a command to be called at the start or at the
+end of a Make command when pressing Generate/Make/Run.
+<p>The RXF properties are described in a XML property help file, see <a href="WST_3-Technology_7-Properties.htm">Properties</a>.
+</p>
+<p></p>
+</div>
+<p id="Footer">This documentation belongs to the Product
+RXF_CPP_V8.0.1, released on 2022-03-14. (c) 2022, Sodius
+Willert</p>
+</div>
+</body></html>

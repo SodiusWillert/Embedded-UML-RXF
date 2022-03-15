@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  
+  
+  <title>RXF Documentation - MISRA-C 2004 Compliancy</title><!-- $Id: WST_3-Technology_5-MISRA.htm 70211 2021-03-23 15:07:47Z dkoelbel $ $URL: https://svn.willert.de/V8/trunk/Framework/Product/RXF_CPP/RXF/Doc/Help/WST_3-Technology_5-MISRA.htm $ --><link rel="stylesheet" href="wst.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="wst_print.css" type="text/css" media="print"></head>
+<body>
+<div id="View">
+  <script src="TOC.js" type="text/javascript"> </script> 	
+
+  <div id="Content">
+  <h1><a name="MISRA_2004_compliancy" id="MISRA_2004_compliancy"></a>MISRA Compliancy</h1>
+Willert Software Tools GmbH has gone through great effort to adapt the
+code in the RXF to make it MISRA C++ 2008 compliant. If your application
+must be MISRA compliant, you must set up your own MISRA compliance
+process, which can be based on our product, your model and project
+specific MISRA&nbsp;documents and procedures. This should at least
+include:<br><ol><li>A compliance matrix, which shows how compliance has been enforced.&nbsp;</li><li>All of the&nbsp;code in the product is compliant with the MISRA rules or is subject to documented deviations.&nbsp;</li><li>A
+list of all instances of rules not being followed is maintained, and
+for each instance there is an appropriately signed-off deviation.</li><li>The following issues have been addressed in the development team:&nbsp;
+
+      <ol style="list-style-type: lower-alpha;"><li>Training&nbsp;</li><li>Style guide&nbsp;</li><li>Compiler selection and validation&nbsp;</li><li>Checking tool validation&nbsp;</li><li>Metrics&nbsp;</li><li>Test coverage<br></li></ol>
+    </li></ol>
+
+  <br>
+In the sources of the RXF, excluding those of the Container Classes,
+you will find code comments, which refer to MISRA rules. These MISRA
+suppression comments use macros to be able to support different tools
+for MISRA compliancy checking. Some tools can be adapted to
+recognize these macros as specific rule suppression comments while for
+other tools such as PC-lint the macros need to be replaced by tool
+specific suppressions first.<br>
+  <br>
+Please contact our sales department at +49 5722 9678 60 for any
+questions or inquiries for acquiring our MISRA&nbsp;specific documents
+and procedures.<br><h2>MISRA Settings / Profiles</h2>The
+RXF profile implies MISRA improvement properties, which are
+automatically used when the RXF is used. The details of the overridden
+MISRA-related properties can be reviewed via the file
+"RXF\Profiles\Rhapsody\Properties\MISRA.prp".<br><br>In
+addition our RXFStereotypesCpp profile offers stereotypes that can be used in the user model
+to make e.g. an operation suppress some MISRA rule(s) in their body or
+specification, set up via tags.<br><br></div><p id="Footer">This documentation belongs to the Product RXF_CPP_V8.0.1, released on 2022-03-14. (c) 2022, Sodius Willert</p>
+</div>
+</body></html>

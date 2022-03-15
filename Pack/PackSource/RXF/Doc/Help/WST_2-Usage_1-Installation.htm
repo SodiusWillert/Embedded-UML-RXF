@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  
+  <title>RXF Documentation - Installation</title><!-- $Id: WST_2-Usage_1-Installation.htm 74006 2022-01-03 14:58:55Z dkoelbel $ $URL: https://svn.willert.de/V8/trunk/Framework/Shared/Doc/Help/WST_2-Usage_1-Installation.htm $ --><link rel="stylesheet" href="wst.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="wst_print.css" type="text/css" media="print"><meta http-equiv="content-type" content="text/html; charset=utf-8"></head>
+<body>
+<div id="View">
+  <script src="TOC.js" type="text/javascript"> </script> 	
+
+  <div id="Content">
+  <h1><a name="RXFActivator" id="Installation_of_Product"></a><a name="Setup"></a>Installation using the RXFActivator</h1>The
+installation of an RXF by Willert Software Tools requires you to already
+have the modeling tool&nbsp;Rhapsody installed.<br><br>A release of an RXF is delivered as ZIP-Archive. It contains all
+framework files and the related tools, samples and documentation. You
+should select a destination folder to unzip it where your user account
+has read and write access.
+We recommend to unzip it relative to your
+IDE projects to be able to use it together with your configuration
+management.<br><br>Once
+the ZIP has been extracted, the framework is ready to be used.
+But in most cases Rhapdody needs to be prepared to work together with the RXF. The RXF comes with
+a small tool called RXFActivator, that performs the Rhapsody RXF integration for you.<br><br>From
+the extracted RXF folder execute RXFActivator.exe, it will ask for
+administrator rights that are needed e.g. to write to the registry. It
+is a console application that will list all Rhapsody installations
+found on your machine. All those Rhapsody versions can afterwards be
+used with the RXF. The program can be exited by pressing any key after it has
+finished.<br><br><img alt="Screenshot of the RXFActivator tool." src="Images/Shared/RXFActivatorTool.png"><br>
+<h2><a name="Updating_Rhapsody"></a><a name="Rhapsody_Update"></a>Moving the RXF Folder and Installing new Rhapsody Versions</h2>You can move the RXF folder to any other location with read and write access, there is no need to re-execute the RXFActivator.<br>But you need to re-execute it after a new Rhapsody version has been installed.
+
+<h2><a name="Installation_Problems"></a><a name="Setup_Problems"></a><a name="RXFActivator_Warnings"></a>Possible Problems During Setup</h2>
+If you experience any problems, please first check the following possible solutions:<br>
+<ul>
+  <li>Make sure you have the necessary read/write access privileges in the RXF and Rhapsody directories.<br>
+    <br>
+  </li>
+  <li>Make sure you have enough disk space available.<br>
+    <br>
+  </li>
+  <li>Only Windows 10 is the supported operating system.<br><br></li><li>If
+you want to place the RXF on a "subst" mapped drive or on a network
+drive, please make sure that the administrator account, executing the
+RXFActivator sees the path to the RXF the same way your user sees it.<br>
+    <br>
+  </li>
+  <li>Sometimes&nbsp;long&nbsp;path
+names may cause problems. If RXFActivator failed, you may retry it after
+moving all RXF files to a directory on
+your local drive with shorter paths&nbsp;(e.g. "C:\Willert\") and
+launching RXFActivator.exe from there again.<br>
+    <br>
+  </li>
+  <li>If
+the RXFActivator experiences problems, it shall print warning or error
+messages. If you need further help, please include the console output
+of the RXFActivator and send an e-mail to <a href="mailto:support@willert.de">support@willert.de</a></li></ul>
+
+<h2><a name="Uninstalling_the_RXF"></a><a name="Deinstallation"></a><a name="Removing_the_RXF"></a>Uninstalling the RXF</h2>
+
+Basically all you need to do to uninstall the RXF is to delete its folder. <span style="color: rgb(51, 51, 51); font-family: &quot;Trebuchet MS&quot;,Helvetica,Arial,sans-serif; font-size: 16.0016px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none;">There is no new entry added to the Windows registry during installation.</span><br>
+Regarding the Rhapsody modifications the RXFActivator also performs,
+usually there is no need to undo it. However if you completely removed
+all RXFs
+from your computer you can follow the following steps to make sure the
+RXF does not leave modifications in the Rhapsody installation:<br>
+<ul>
+	<li>In your Rhapsody "Share\Settings" or "UserShare\Settings" folder you shall find the subfolders "CodeCentric_Original" and 
+	"SoftwareArchitect_Original". If that is the case, you may:
+	</li>
+	<ul>
+		<li>delete the subfolders "CodeCentric" and "SoftwareArchitect" and
+		</li>
+		<li>rename subfolder "CodeCentric_Original" to "CodeCentric" and
+		</li>
+		<li>rename subfolder "SoftwareArchitect_Original" to "SoftwareArchitect"
+		</li>
+	</ul>
+	<li>In your Rhapsody "Share\Properties" or "UserShare\Properties" folder edit the file SiteC++.prp
+	</li>
+	<ul>
+		<li>If it contains an environment enumeration literal "RXF" you may remove it, including the following comma (",").
+		</li>
+	</ul>
+</ul>
+
+<h2>Putting the RXF under Configuration Management</h2>
+
+See <a href="WST_2-Usage_9-Configuration-Management.htm">Software Configuration Management</a> page.<br>
+
+
+   </div>
+
+  <p id="Footer">This documentation belongs to the Product RXF_CPP_V8.0.1, released on 2022-03-14. (c) 2022, Sodius Willert</p>
+</div>
+</body></html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>RXF Documentation - Getting Started 3</title>
+  <!-- $Id: WST_2-Usage_3-Getting-Started-3.htm 70061 2021-03-12 12:42:27Z eroemer $ $URL: https://svn.willert.de/V8/trunk/Framework/Shared/Doc/Help/WST_2-Usage_3-Getting-Started-3.htm $ -->
+     
+  <link rel="stylesheet" href="wst.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="wst_print.css" type="text/css" media="print">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"></head>
+<body>
+<div id="View">
+<script src="TOC.js" type="text/javascript"> </script>
+<div id="Content">
+<h1>Getting Started Example - Part 3</h1>
+
+If you inspect the Scope of various components, you will notice that for RTOS based configurations, 
+code is generated for the entire model. But for the OORTX, which does not support 
+<a href="WST_3-Technology_1-Concurrency.htm">active classes</a>, the package active is disabled:<br>
+<br>
+<div align="center">
+Scope for Blinky with RTOS<br>
+<img src="Images/BlinkyScopeRTOS.png"><br>
+Scope for Blinky with OORTX<br>
+<img src="Images/BlinkyScopeOORTX.png">
+</div>
+<p>
+The name of a component is free to choose, but it is a good idea to use
+the same name as the configured RTOS, so a user of this model
+immediately recognizes for which environment a component is meant.
+The RXF is released for multiple environments; the property
+RXF::DeployerFolders::RTOS on the active configuration shows all
+supported environments.
+</p><p>
+A Deployer is used to deploy Rhapsody generated source files from your model, generated configuration files and RXF source files
+to your IDE project, where you can build an executable or library. </br>
+If you select the Properties tab of a component, you can select the RTOS and IDE details easily in the RXF perspective:
+</p><p>
+<img src="Images/Shared/BlinkyComponentProperties.png"><br>
+<br>
+Results in:<br>
+<br>
+<img src="Images/Shared/BlinkyComponentPropertiesDeployer.png"> 
+</p><p>
+The IDEProject must be set to the IDE project file where you build your executable or library.
+<br/>
+You do not need to tell the Deployer which kind of IDE project
+is selected. The Deployer recognizes the IDE project by the suffix and
+content of the IDE project file and internally selects the correct IDE
+exporter.<br/>
+The <a href="WST_2-Usage_4-Deployment.htm">Deployer tab is described in detail in a dedicated section</a>.
+</p><p>
+
+Please continue to the next <a href="WST_2-Usage_3-Getting-Started-4.htm">Part 4</a><a>
+
+
+
+</a></p></div>
+<p id="Footer"><a>This documentation belongs to the Product RXF_CPP_V8.0.1, released on 2022-03-14. (c) 2022, Sodius Willert</a></p>
+</div>
+</body></html>
